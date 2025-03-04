@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ventures</title>
+    <link rel="stylesheet" href="/css/work.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="container">
+        <div class="container-title">
+            <h1><a href="/index.html">work</a></h1>
+        </div>
+
+        <div class="job-container">
+            <div class="job-image">
+                <img src="/assets/accountica-logo.svg" alt="Accountica logo">
+            </div>
+            <div class="job-details">
+                <h3 class="job-title">Incoming Software Engineer Intern</h3>
+                <p class="job-role">Accountica</p>
+            </div>
+            <div class="job-dates">
+                <p>TBD</p>
+            </div>
+        </div>
+
+        <div class="container-title">
+            <h1><a href="/index.html">ventures</a></h1>
+        </div>
+
+        <div class="job-container">
+            <div class="job-image">
+                <img src="/assets/pnm-research-logo.svg" alt="P&M Research logo">
+            </div>
+            <div class="job-details">
+                <h3 class="job-title">Co-founder & Principal Consultant</h3>
+                <p class="job-role">P&M Research</p>
+            </div>
+            <div class="job-dates">
+                <p>July 2024 - Present</p>
+            </div>
+            <div class="job-additional-info">
+                <ul>
+                    <li>Helping service businesses scale with proven systems</li>
+                    <li>Serving 4 active clients; generated 40 new clients for a Real Estate technology software platform</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="job-container">
+            <div class="job-image">
+                <img src="/assets/trs-logo.svg" alt="Technical Regulatory Solutions logo">
+            </div>
+            <div class="job-details">
+                <h3 class="job-title">Software Engineer</h3>
+                <p class="job-role">Technical Regulatory Solutions</p>
+            </div>
+            <div class="job-dates">
+                <p>Nov 2023 - Apr 2024</p>
+            </div>
+            <div class="job-additional-info">
+                <ul>
+                    <li>Developed a RAG-based AI minimum viable product using Python (FastAPI, SQLite) to automate construction document analysis</li>
+                    <li>Containerized application using Docker, achieving a 99% uptime while processing 100+ documents <br> weekly</li>
+                    <li>Led strategic partnerships with 3 constructions firms and SAYJ Global mentorship to validate market opportunity</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.querySelectorAll('.job-container').forEach(container => {
+            container.addEventListener('click', function() {
+                this.classList.toggle('active');
+                
+                const additionalInfo = this.querySelector('.job-additional-info');
+                additionalInfo.classList.toggle('active');
+                document.querySelectorAll('.job-container').forEach(jobContainer => {
+                    if (jobContainer !== this) {
+                        const otherInfo = jobContainer.querySelector('.job-additional-info');
+                        otherInfo.classList.remove('active');
+                    }
+                });
+                
+                let nextSibling = this.nextElementSibling;
+                while (nextSibling) {
+                    if (additionalInfo.classList.contains('active')) {
+                        const height = additionalInfo.scrollHeight + 10; 
+                        nextSibling.style.transform = `translateY(${height}px)`;
+                    } else {
+                        nextSibling.style.transform = 'translateY(0)';
+                    }
+                    nextSibling = nextSibling.nextElementSibling;
+                }
+            });
+        });
+    </script>
+  </body>
+</html>

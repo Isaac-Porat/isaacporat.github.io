@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ventures</title>
+    <link rel="stylesheet" href="/css/projects.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="container">
+        <div class="container-title">
+            <h1><a href="/index.html">projects</a></h1>
+        </div>
+
+        <div class="project-container">
+            <div class="project-image">
+                <img src="/assets/acas-logo.svg" alt="ACAS logo">
+            </div>
+            <div class="project-details">
+                <h3 class="project-title">Autonomous Collision Avoidance Systems</h3>
+                <p class="project-description">Provisional patent for a novel vehicle-to-vehicle communication system.</p>
+            </div>
+            <div class="project-additional-info">
+                <ul>
+                    <li>Filed provisional patent for a novel vehicle-to-vehicle communication system that reduces collision risks</li>
+                    <li>Developed and validated driving simulator model using Python (Pandas, CARLA Simulator) for real-time
+                        vehicle-to-vehicle communication protocols, enabling autonomous fleet safety through innovate safety design</li>
+                    <li>Collaborated with Microsoft, Google, and Oak Ridge Laboratory engineers to validate safety protocol models</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.project-container').forEach(container => {
+            container.addEventListener('click', function() {
+                this.classList.toggle('active');
+                
+                const additionalInfo = this.querySelector('.project-additional-info');
+                additionalInfo.classList.toggle('active');
+                document.querySelectorAll('.project-container').forEach(jobContainer => {
+                    if (jobContainer !== this) {
+                        const otherInfo = jobContainer.querySelector('.project-additional-info');
+                        otherInfo.classList.remove('active');
+                    }
+                });
+                
+                let nextSibling = this.nextElementSibling;
+                while (nextSibling) {
+                    if (additionalInfo.classList.contains('active')) {
+                        const height = additionalInfo.scrollHeight + 10; 
+                        nextSibling.style.transform = `translateY(${height}px)`;
+                    } else {
+                        nextSibling.style.transform = 'translateY(0)';
+                    }
+                    nextSibling = nextSibling.nextElementSibling;
+                }
+            });
+        });
+    </script>
+  </body>
+</html>
